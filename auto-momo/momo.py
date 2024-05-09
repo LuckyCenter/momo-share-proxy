@@ -26,10 +26,12 @@ async def web_request(url, proxy, session):
     # 并发限制
     async with Semaphore(5):
         try:
+            print(f"开始使用代理访问。")
             async with await session.get(url=url, headers=await getheaders(), proxy=proxy,
-                                         timeout=ClientTimeout(total=10)) as response:
+                                         timeout=ClientTimeout(total=15)) as response:
                 # 返回字符串形式的相应数据
                 page_source = await response.text()
+                print(f"使用代理{proxy}访问墨墨成功。")
                 await page(page_source)
         except Exception:
             pass

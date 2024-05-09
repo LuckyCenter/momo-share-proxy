@@ -135,11 +135,11 @@ async def soup_page(source, mod):
         posts = findall(r'<td>(\d{1,5})</td>', source)
         for i in range(len(ips)):
             listIP.append(f'http://{ips[i]}:{posts[i]}')
-    elif mod == 8:
-        temp = search(r'<div\sstyle=\"padding-left:20px;\">[\s]?(.*?)[\s]?</div>', source)
-        pList = temp.group(1).strip().split('<br>')[:-2]
-        for p in pList:
-            print(f"http://{p}")
+    # elif mod == 8:
+    #     temp = search(r'<div\sstyle=\"padding-left:20px;\">[\s]?(.*?)[\s]?</div>', source)
+    #     pList = temp.group(1).strip().split('<br>')[:-2]
+    #     for p in pList:
+    #         print(f"http://{p}")
 
 
 def ip_main():
